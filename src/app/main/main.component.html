@@ -1,12 +1,28 @@
 <div class="main">
+
+  <!--  head-->
   <div class="head">
     <div>
       <label for="notes-number">Notes : </label>
       <span id="notes-number">{{notes.length}}</span>
     </div>
-    <div>
+    <div *ngIf="onlyDone().length !== 0 ">
       <label for="only-done-notes-number">Done : </label>
-      <span id="only-done-notes-number">5</span>
+      <span id="only-done-notes-number">{{onlyDone().length}}</span>
     </div>
   </div>
+
+  <!--  notes-->
+  <div class="note">
+    <span class="note-title">{{notes[0].title}}</span>
+    <p class="note-description">{{notes[0].description}}</p>
+    <div class="actions">
+      <div>
+        <label>Effectuée ?</label>
+        <input type="checkbox" [checked]="notes[0].done" disabled/>
+      </div>
+      <button>Supprimer</button>
+    </div>
+  </div>
+
 </div>

@@ -6,11 +6,27 @@
 .head {
   display: flex;
   justify-content: space-between;
-  padding: 0.3em;
-  margin: 0.5em;
+  padding: 0.3rem;
+  margin: 0.5rem;
   font-weight: bold;
   font-size: 2em;
   border: solid 1px;
-  border-radius: 0.3em;
+  border-radius: 0.3rem;
+}
 
+.note {
+  border: solid 1px;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  margin: 0.7rem 0.5rem 0.7rem 0.5rem;
+}
+
+.note-title{
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
 }
