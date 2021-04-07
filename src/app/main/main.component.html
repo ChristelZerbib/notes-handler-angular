@@ -30,7 +30,8 @@
     </div>
   </div>
 <!--  form-->
-  <form class="form" #myForm="ngForm">
+  <form class="form" #myForm="ngForm" (ngSubmit)="createOrUpdateNote(myForm)">
+    <input name="id" [(ngModel)]="selectedNote.id" hidden/>
     <p>
       <label for="title-edit">Titre: </label>
       <input type="text" id="title-edit" placeholder="Titre" name="title" [(ngModel)]="selectedNote.title" required/>
@@ -49,8 +50,8 @@
       <input name="done" type="checkbox" id="done-edit" [(ngModel)]="selectedNote.done"/>
     </p>
     <div class="actions">
-      <button>Enregistrer</button>
-      <button>Reset</button>
+      <button type="submit" [disabled]="myForm.invalid">Enregistrer</button>
+      <button type="button" (click)="reset()">Reset</button>
     </div>
   </form>
 

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 export type Note = {
   id: number,
@@ -13,6 +14,16 @@ const EMPTY_NOTE: Note = {
   description: "",
   done: false,
   createdAt: new Date()
+}
+
+function generateId() {
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  return getRandomInt(100000, 99999);
 }
 
 @Component({
@@ -55,4 +66,21 @@ export class MainComponent implements OnInit {
     this.selectedNote = {...this.notes.find(note => note.id === id)};
   }
 
+  reset() {
+    this.selectedNote = EMPTY_NOTE;
+  }
+
+  createOrUpdateNote(input: NgForm): void {
+    if (input.value.id === null) {
+      let newNote = {...input.value};
+      newNote.createdAt = new Date();
+      newNote.id = generateId();
+      this.notes.push(newNote);
+    } else {
+      const found = this.notes.find(note => note.id === input.value.id);
+         found.title = input.value.title;
+         found.description = input.value.description;
+         found.done = input.value.done;
+    }
+  }
 }
