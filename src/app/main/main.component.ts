@@ -37,4 +37,9 @@ export class MainComponent implements OnInit {
     const idx = this.notes.findIndex(note => note.id === id);
     this.notes.splice(idx, 1);
   }
+
+  toggleDone(id: number): void {
+    const found = this.notes.find(note => note.id === id);
+    found.done = !found.done;
+  }
 }

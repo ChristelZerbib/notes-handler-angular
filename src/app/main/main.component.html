@@ -6,10 +6,13 @@
       <label for="notes-number">Notes : </label>
       <span id="notes-number">{{notes.length}}</span>
     </div>
-    <div *ngIf="onlyDone().length !== 0">
+    <div *ngIf="onlyDone().length !== 0; else motivate">
       <label for="only-done-notes-number">Done : </label>
       <span id="only-done-notes-number">{{onlyDone().length}}</span>
     </div>
+    <ng-template #motivate>
+      <span>Faites un effort svp !!</span>
+    </ng-template>
   </div>
 
   <!--  notes-->
@@ -19,7 +22,7 @@
     <div class="actions">
       <div>
         <label>Effectuée ?</label>
-        <input type="checkbox" [checked]="note.done"/>
+        <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id)" />
       </div>
       <button [disabled]="note.done" (click)="deleteNote(note.id)">Supprimer</button>
     </div>
