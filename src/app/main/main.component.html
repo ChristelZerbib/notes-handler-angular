@@ -13,15 +13,15 @@
   </div>
 
   <!--  notes-->
-  <div class="note">
-    <span class="note-title">{{notes[0].title}}</span>
-    <p class="note-description">{{notes[0].description}}</p>
+  <div class="note" *ngFor="let note of notes">
+    <span class="note-title">{{note.title}}</span>
+    <p class="note-description">{{note.description}}</p>
     <div class="actions">
       <div>
         <label>Effectuée ?</label>
-        <input type="checkbox" [checked]="notes[0].done" disabled/>
+        <input type="checkbox" [checked]="note.done"/>
       </div>
-      <button>Supprimer</button>
+      <button [disabled]="note.done">Supprimer</button>
     </div>
   </div>
 

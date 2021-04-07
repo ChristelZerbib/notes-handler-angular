@@ -16,8 +16,10 @@ export type Note = {
 
 export class MainComponent implements OnInit {
   notes: Note[] = [
-    {id: 1, title: 'Cinéma', description: "Aller voir le film Jeudi...", done: true, createdAt: new Date()},
-    {id: 2, title: 'Maman', description: "Appeler maman...", done: false, createdAt: new Date()}
+    {id: 1, title: 'Cinéma', description: "Aller voir le film Jeudi...", done: false, createdAt: new Date()},
+    {id: 2, title: 'Maman', description: "Appeler maman...", done: false, createdAt: new Date()},
+    {id: 3, title: 'Sport', description: "Aller à la salle de sport...", done: true, createdAt: new Date()},
+    {id: 4, title: 'Lecture', description: "lire le livre de Js...", done: true, createdAt: new Date()}
   ];
 
   constructor() {
