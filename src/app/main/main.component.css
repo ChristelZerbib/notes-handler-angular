@@ -1,0 +1,16 @@
+.main{
+  background-color: aqua;
+  width: 50%;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3em;
+  margin: 0.5em;
+  font-weight: bold;
+  font-size: 2em;
+  border: solid 1px;
+  border-radius: 0.3em;
+
+}
