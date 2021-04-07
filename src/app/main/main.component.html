@@ -1,31 +1,55 @@
-<div class="main">
+<div [ngStyle]="{display: 'flex'}">
+  <div class="main">
+    <!--  head-->
+    <div class="head">
+      <div>
+        <label for="notes-number">Notes : </label>
+        <span id="notes-number">{{notes.length}}</span>
+      </div>
+      <div *ngIf="onlyDone().length !== 0; else motivate">
+        <label for="only-done-notes-number">Done : </label>
+        <span id="only-done-notes-number">{{onlyDone().length}}</span>
+      </div>
+      <ng-template #motivate>
+        <span>Faites un effort svp !!</span>
+      </ng-template>
+    </div>
 
-  <!--  head-->
-  <div class="head">
-    <div>
-      <label for="notes-number">Notes : </label>
-      <span id="notes-number">{{notes.length}}</span>
+    <!--  notes-->
+    <div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}">
+      <span class="note-title">{{note.title |  uppercase}}</span>
+      <span>(Créée le : {{note.createdAt | date : 'dd/MM/yyyy'}})</span>
+      <p class="note-description">{{note.description}}</p>
+      <div class="actions">
+        <div>
+          <label>Effectuée ?</label>
+          <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id)"/>
+        </div>
+        <button [disabled]="note.done" (click)="deleteNote(note.id)">Supprimer</button>
+      </div>
     </div>
-    <div *ngIf="onlyDone().length !== 0; else motivate">
-      <label for="only-done-notes-number">Done : </label>
-      <span id="only-done-notes-number">{{onlyDone().length}}</span>
-    </div>
-    <ng-template #motivate>
-      <span>Faites un effort svp !!</span>
-    </ng-template>
   </div>
 
-  <!--  notes-->
-  <div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}" >
-    <span class="note-title">{{note.title}}</span>
-    <p class="note-description">{{note.description}}</p>
+  <div class="form">
+    <p>
+      <label for="title-edit">Titre: </label>
+      <input type="text" id="title-edit" placeholder="Titre"/>
+    </p>
+    <p class="description-edition">
+      <label for="description-edit">Description: </label>
+      <textarea id="description-edit" placeholder="Description" cols="50" rows="5"></textarea>
+    </p>
+    <p>
+      <label for="done-edit">Effectuée?: </label>
+      <input type="checkbox" id="done-edit"/>
+    </p>
     <div class="actions">
-      <div>
-        <label>Effectuée ?</label>
-        <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id)" />
-      </div>
-      <button [disabled]="note.done" (click)="deleteNote(note.id)">Supprimer</button>
+      <button>Enregistrer</button>
+      <button>Reset</button>
     </div>
   </div>
 
 </div>
+
+
+<pre>{{notes | json}}</pre>
