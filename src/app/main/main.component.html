@@ -13,7 +13,7 @@
   </div>
 
   <!--  notes-->
-  <div class="note" *ngFor="let note of notes">
+  <div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}" >
     <span class="note-title">{{note.title}}</span>
     <p class="note-description">{{note.description}}</p>
     <div class="actions">
@@ -21,7 +21,7 @@
         <label>Effectuée ?</label>
         <input type="checkbox" [checked]="note.done"/>
       </div>
-      <button [disabled]="note.done">Supprimer</button>
+      <button [disabled]="note.done" (click)="deleteNote(note.id)">Supprimer</button>
     </div>
   </div>
 
