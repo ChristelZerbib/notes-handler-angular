@@ -16,40 +16,46 @@
     </div>
 
     <!--  notes-->
-    <div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}">
+    <div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}"  (click)="selectNote(note.id)">
       <span class="note-title">{{note.title |  uppercase}}</span>
       <span>(Créée le : {{note.createdAt | date : 'dd/MM/yyyy'}})</span>
       <p class="note-description">{{note.description}}</p>
       <div class="actions">
         <div>
           <label>Effectuée ?</label>
-          <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id)"/>
+          <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id);$event.stopImmediatePropagation()"/>
         </div>
-        <button [disabled]="note.done" (click)="deleteNote(note.id)">Supprimer</button>
+        <button [disabled]="note.done" (click)="deleteNote(note.id);$event.stopImmediatePropagation()">Supprimer</button>
       </div>
     </div>
   </div>
-
-  <div class="form">
+<!--  form-->
+  <form class="form" #myForm="ngForm">
     <p>
       <label for="title-edit">Titre: </label>
-      <input type="text" id="title-edit" placeholder="Titre"/>
+      <input type="text" id="title-edit" placeholder="Titre" name="title" [(ngModel)]="selectedNote.title" required/>
     </p>
     <p class="description-edition">
       <label for="description-edit">Description: </label>
-      <textarea id="description-edit" placeholder="Description" cols="50" rows="5"></textarea>
+      <textarea id="description-edit"
+                name="description"
+                placeholder="Description"
+                cols="50"
+                rows="5" [(ngModel)]="selectedNote.description">
+      </textarea>
     </p>
     <p>
       <label for="done-edit">Effectuée?: </label>
-      <input type="checkbox" id="done-edit"/>
+      <input name="done" type="checkbox" id="done-edit" [(ngModel)]="selectedNote.done"/>
     </p>
     <div class="actions">
       <button>Enregistrer</button>
       <button>Reset</button>
     </div>
-  </div>
+  </form>
 
 </div>
 
-
-<pre>{{notes | json}}</pre>
+<pre>{{myForm.value | json}}</pre>
+<pre>{{myForm.valid | json}}</pre>
+<!--<pre>{{notes | json}}</pre>-->

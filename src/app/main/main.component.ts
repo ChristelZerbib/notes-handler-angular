@@ -7,6 +7,13 @@ export type Note = {
   done: boolean,
   createdAt: Date
 }
+const EMPTY_NOTE: Note = {
+  id: null,
+  title: "",
+  description: "",
+  done: false,
+  createdAt: new Date()
+}
 
 @Component({
   selector: 'app-main',
@@ -21,6 +28,7 @@ export class MainComponent implements OnInit {
     {id: 3, title: 'Sport', description: "Aller à la salle de sport...", done: false, createdAt: new Date()},
     {id: 4, title: 'Lecture', description: "lire le livre de Js...", done: true, createdAt: new Date()}
   ];
+  selectedNote: Note = EMPTY_NOTE
 
   constructor() {
   }
@@ -42,4 +50,9 @@ export class MainComponent implements OnInit {
     const found = this.notes.find(note => note.id === id);
     found.done = !found.done;
   }
+
+  selectNote(id: number): void {
+    this.selectedNote = {...this.notes.find(note => note.id === id)};
+  }
+
 }
