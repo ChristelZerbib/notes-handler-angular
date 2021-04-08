@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import { NoteComponent } from './note/note.component';
 import { NoteEditorComponent } from './note-editor/note-editor.component';
 import {NotesManagerService} from "./services/notes-manager.service";
+import { NotesHeadComponent } from './notes-head/notes-head.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {NotesManagerService} from "./services/notes-manager.service";
     AppComponent,
     MainComponent,
     NoteComponent,
-    NoteEditorComponent
+    NoteEditorComponent,
+    NotesHeadComponent
   ],
   imports: [
     BrowserModule,

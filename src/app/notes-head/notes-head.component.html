@@ -1,0 +1,14 @@
+<div class="head">
+  <div>
+    <label for="notes-number">Notes : </label>
+    <span id="notes-number">{{notes.length}}</span>
+  </div>
+  <div *ngIf="onlyDone().length !== 0; else motivate">
+    <label for="only-done-notes-number">Done : </label>
+    <span id="only-done-notes-number">{{onlyDone().length}}</span>
+  </div>
+  <ng-template #motivate>
+    <span>Faites un effort svp !!</span>
+  </ng-template>
+</div>
+
