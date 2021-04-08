@@ -9,6 +9,8 @@ import { NoteComponent } from './note/note.component';
 import { NoteEditorComponent } from './note-editor/note-editor.component';
 import {NotesManagerService} from "./services/notes-manager.service";
 import { NotesHeadComponent } from './notes-head/notes-head.component';
+import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { NotesHeadComponent } from './notes-head/notes-head.component';
     MainComponent,
     NoteComponent,
     NoteEditorComponent,
-    NotesHeadComponent
+    NotesHeadComponent,
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

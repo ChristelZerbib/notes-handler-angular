@@ -1,0 +1,19 @@
+ul {
+  list-style: none;
+  padding: 0.5rem 0.1rem 0.5rem 0.1rem;
+  display: flex;
+  border: solid 1px;
+  border-radius: 0.3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+ul > li {
+  margin-right: 1rem;
+}
+
+a.active-link{
+  color: deeppink;
+}
+
