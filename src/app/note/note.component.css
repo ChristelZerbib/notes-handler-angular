@@ -1,0 +1,18 @@
+.note {
+  border: solid 1px;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  margin: 0.7rem 0.5rem 0.7rem 0.5rem;
+}
+.note.done{
+  background-color: greenyellow;
+}
+.note-title{
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

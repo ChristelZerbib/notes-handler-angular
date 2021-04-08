@@ -14,22 +14,13 @@
         <span>Faites un effort svp !!</span>
       </ng-template>
     </div>
-
     <!--  notes-->
-    <div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}"  (click)="selectNote(note.id)">
-      <span class="note-title">{{note.title |  uppercase}}</span>
-      <span>(Créée le : {{note.createdAt | date : 'dd/MM/yyyy'}})</span>
-      <p class="note-description">{{note.description}}</p>
-      <div class="actions">
-        <div>
-          <label>Effectuée ?</label>
-          <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id);$event.stopImmediatePropagation()"/>
-        </div>
-        <button [disabled]="note.done" (click)="deleteNote(note.id);$event.stopImmediatePropagation()">Supprimer</button>
-      </div>
-    </div>
+     <app-note *ngFor="let note of notes" [note]="note"
+               (selected)="selectNote($event)" (deleted)="deleteNote($event)" (toggle)="toggleDone($event)">
+
+     </app-note>
   </div>
-<!--  form-->
+  <!--  form-->
   <form class="form" #myForm="ngForm" (ngSubmit)="createOrUpdateNote(myForm)">
     <input name="id" [(ngModel)]="selectedNote.id" hidden/>
     <p>

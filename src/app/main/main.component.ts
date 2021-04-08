@@ -8,7 +8,7 @@ export type Note = {
   done: boolean,
   createdAt: Date
 }
-const EMPTY_NOTE: Note = {
+export const EMPTY_NOTE: Note = {
   id: null,
   title: "",
   description: "",

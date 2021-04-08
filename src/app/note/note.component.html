@@ -1,0 +1,15 @@
+<!--<div *ngFor="let note of notes" [ngClass]="{'note': true, 'done': note.done}" (click)="selectNote(note.id)">-->
+<div [ngClass]="{'note': true, 'done': note.done}" (click)="selected.emit(note.id)">
+  <span class="note-title">{{note.title |  uppercase}}</span>
+  <span>(Créée le : {{note.createdAt | date : 'dd/MM/yyyy'}})</span>
+  <p class="note-description">{{note.description}}</p>
+  <div class="actions">
+    <div>
+      <label>Effectuée ?</label>
+<!--      <input type="checkbox" [checked]="note.done" (click)="toggleDone(note.id);$event.stopImmediatePropagation()"/>-->
+      <input type="checkbox" [checked]="note.done" (click)="toggle.emit(note.id)"/>
+    </div>
+<!--    <button [disabled]="note.done" (click)="deleteNote(note.id);$event.stopImmediatePropagation()">Supprimer</button>-->
+    <button [disabled]="note.done" (click)="deleted.emit(note.id)">Supprimer</button>
+  </div>
+</div>
