@@ -13,42 +13,6 @@
   border: solid 1px;
   border-radius: 0.3rem;
 }
-
-/*note*/
-/*.note {*/
-/*  border: solid 1px;*/
-/*  border-radius: 0.3rem;*/
-/*  padding: 0.3rem;*/
-/*  margin: 0.7rem 0.5rem 0.7rem 0.5rem;*/
-/*}*/
-/*.note.done{*/
-/*  background-color: greenyellow;*/
-/*}*/
-/*.note-title{*/
-/*  font-weight: bold;*/
-/*  font-size: 1.3em;*/
-/*}*/
-
-/*.actions {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*}*/
-
-
-/*form*/
-.form {
+app-note-editor{
   width: 50%;
-  background-color: coral;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border: solid 1px;
-  border-radius: 0.3rem;
-}
-
-.description-edition *{
-  vertical-align: top;
-}
-
-.form >.action {
-  display: flex;
 }

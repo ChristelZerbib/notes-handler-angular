@@ -16,38 +16,10 @@
     </div>
     <!--  notes-->
      <app-note *ngFor="let note of notes" [note]="note"
-               (selected)="selectNote($event)" (deleted)="deleteNote($event)" (toggle)="toggleDone($event)">
+               (selected)="selectNote($event)" (deleted)="deleteNote($event)">
 
      </app-note>
   </div>
-  <!--  form-->
-  <form class="form" #myForm="ngForm" (ngSubmit)="createOrUpdateNote(myForm)">
-    <input name="id" [(ngModel)]="selectedNote.id" hidden/>
-    <p>
-      <label for="title-edit">Titre: </label>
-      <input type="text" id="title-edit" placeholder="Titre" name="title" [(ngModel)]="selectedNote.title" required/>
-    </p>
-    <p class="description-edition">
-      <label for="description-edit">Description: </label>
-      <textarea id="description-edit"
-                name="description"
-                placeholder="Description"
-                cols="50"
-                rows="5" [(ngModel)]="selectedNote.description">
-      </textarea>
-    </p>
-    <p>
-      <label for="done-edit">Effectuée?: </label>
-      <input name="done" type="checkbox" id="done-edit" [(ngModel)]="selectedNote.done"/>
-    </p>
-    <div class="actions">
-      <button type="submit" [disabled]="myForm.invalid">Enregistrer</button>
-      <button type="button" (click)="reset()">Reset</button>
-    </div>
-  </form>
-
+  <app-note-editor></app-note-editor>
 </div>
 
-<pre>{{myForm.value | json}}</pre>
-<pre>{{myForm.valid | json}}</pre>
-<!--<pre>{{notes | json}}</pre>-->

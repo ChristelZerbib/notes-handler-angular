@@ -1,0 +1,18 @@
+.form {
+  /*width: 50%;*/
+  background-color: coral;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: solid 1px;
+  border-radius: 0.3rem;
+}
+
+.description-edition *{
+  vertical-align: top;
+}
+
+.form >.actions {
+  display: flex;
+  justify-content: space-between;
+}
+

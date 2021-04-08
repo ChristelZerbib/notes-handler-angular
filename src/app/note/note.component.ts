@@ -10,7 +10,6 @@ export class NoteComponent implements OnInit {
   @Input() note;
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
-  @Output() toggle = new EventEmitter();
 
   constructor() {
   }
