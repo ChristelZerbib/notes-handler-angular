@@ -1,4 +1,7 @@
 <ul>
   <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
   <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+  <li class="state-connection">
+    <div [ngClass]="{connected:isConnected()}" id="state-connection"></div>
+  </li>
 </ul>

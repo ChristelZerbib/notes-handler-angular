@@ -17,3 +17,17 @@ a.active-link{
   color: deeppink;
 }
 
+.state-connection{
+  margin-left: auto;
+}
+#state-connection{
+  width: 1rem;
+  height: 1rem;
+  background-color: red;
+  border-radius: 50%;
+}
+
+#state-connection.connected{
+  background-color: green;
+}
+

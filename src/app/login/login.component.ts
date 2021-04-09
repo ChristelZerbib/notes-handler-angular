@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) {
   }
 
-  isConnected = false;
+  isConnected;
 
   ngOnInit(): void {
     this.isConnected = this.loginService.isConnected;
