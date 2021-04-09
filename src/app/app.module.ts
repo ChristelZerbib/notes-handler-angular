@@ -11,6 +11,7 @@ import {NotesManagerService} from "./services/notes-manager.service";
 import { NotesHeadComponent } from './notes-head/notes-head.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     NoteEditorComponent,
     NotesHeadComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
