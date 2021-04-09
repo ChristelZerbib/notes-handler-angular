@@ -19,11 +19,11 @@ export type Note = {
 }
 export const EMPTY_NOTE: Note = {
   id: null,
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   done: false,
   createdAt: new Date()
-}
+};
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +31,15 @@ export const EMPTY_NOTE: Note = {
 export class NotesManagerService {
   selectedNote: Note = EMPTY_NOTE;
   notes: Note[] = [
-    {id: 1, title: 'Cinéma', description: "Aller voir le film Jeudi...", done: true, createdAt: new Date()},
-    {id: 2, title: 'Maman', description: "Appeler maman...", done: true, createdAt: new Date()},
-    {id: 3, title: 'Sport', description: "Aller à la salle de sport...", done: false, createdAt: new Date()},
-    {id: 4, title: 'Lecture', description: "lire le livre de Js...", done: true, createdAt: new Date()}
+    {id: 1, title: 'Cinéma', description: 'Aller voir le film Jeudi...', done: true, createdAt: new Date()},
+    {id: 2, title: 'Maman', description: 'Appeler maman...', done: true, createdAt: new Date()},
+    {id: 3, title: 'Sport', description: 'Aller à la salle de sport...', done: false, createdAt: new Date()},
+    {id: 4, title: 'Lecture', description: 'lire le livre de Js...', done: true, createdAt: new Date()}
   ];
 
   constructor() {
   }
+
   reset() {
     this.selectedNote = EMPTY_NOTE;
   }
@@ -47,10 +48,11 @@ export class NotesManagerService {
     this.selectedNote = {...this.notes.find(note => note.id === id)};
   }
 
- // crud
+  // crud
   createOrUpdate(input) {
-    if (!input.value)
+    if (!input.value) {
       return;
+    }
 
     if (input.value.id === null) {
       let newNote = {...input.value};
@@ -64,6 +66,7 @@ export class NotesManagerService {
       found.done = input.value.done;
     }
   }
+
   delete(id: number) {
     const idx = this.notes.findIndex(note => note.id === id);
     this.notes.splice(idx, 1);
