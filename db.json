@@ -1,19 +1,28 @@
 {
-  "posts": [
+  "notes": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "Cinéma",
+      "description": "Aller voir le film Jeudi...",
+      "done": true
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "Maman",
+      "description": "Appeler maman...",
+      "done": true
+    },
+    {
+      "id": 4,
+      "title": "Lecture 4",
+      "description": "lire le livre de Js et celui d'angular",
+      "done": false
+    },
+    {
+      "id": 5,
+      "title": "Maman & Papa",
+      "description": "rendre visite à papa ..",
+      "done": false
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

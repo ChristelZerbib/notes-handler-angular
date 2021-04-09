@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-export function generateId() {
-  function getRandomInt(min, max) {
+export function generateId(): number {
+  function getRandomInt(min, max): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
@@ -10,13 +11,14 @@ export function generateId() {
   return getRandomInt(100000, 99999);
 }
 
+const BASE_URL = 'http://localhost:3000';
 export type Note = {
   id: number,
   title: string,
   description: string,
   done: boolean,
-  createdAt: Date
-}
+  createdAt?: Date
+};
 export const EMPTY_NOTE: Note = {
   id: null,
   title: '',
@@ -30,46 +32,63 @@ export const EMPTY_NOTE: Note = {
 })
 export class NotesManagerService {
   selectedNote: Note = EMPTY_NOTE;
-  notes: Note[] = [
-    {id: 1, title: 'Cinéma', description: 'Aller voir le film Jeudi...', done: true, createdAt: new Date()},
-    {id: 2, title: 'Maman', description: 'Appeler maman...', done: true, createdAt: new Date()},
-    {id: 3, title: 'Sport', description: 'Aller à la salle de sport...', done: false, createdAt: new Date()},
-    {id: 4, title: 'Lecture', description: 'lire le livre de Js...', done: true, createdAt: new Date()}
-  ];
+  notes: Note[] = [];
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
+    this.loadDataFromDb();
   }
 
-  reset() {
+  private loadDataFromDb(): void {
+    this.httpClient.get(`${BASE_URL}/notes`).subscribe((notesOfDb) => {
+      this.notes.length = 0;
+      this.notes.push(...(notesOfDb as Note[]));
+    });
+  }
+
+  reset(): void {
     this.selectedNote = EMPTY_NOTE;
   }
 
-  select(id: number) {
+  select(id: number): void {
     this.selectedNote = {...this.notes.find(note => note.id === id)};
   }
 
   // crud
-  createOrUpdate(input) {
-    if (!input.value) {
+  createOrUpdate(form): void {
+    if (!form.value) {
       return;
     }
-
-    if (input.value.id === null) {
-      let newNote = {...input.value};
-      newNote.createdAt = new Date();
-      newNote.id = generateId();
-      this.notes.push(newNote);
+    if (form.value.id === null) {
+      this.creatFrom(form);
     } else {
-      const found = this.notes.find(note => note.id === input.value.id);
-      found.title = input.value.title;
-      found.description = input.value.description;
-      found.done = input.value.done;
+      this.updateFrom(form);
     }
   }
 
-  delete(id: number) {
-    const idx = this.notes.findIndex(note => note.id === id);
-    this.notes.splice(idx, 1);
+  private updateFrom(form): void {
+    const updateNote = {...form.value};
+    this.httpClient.put(`${BASE_URL}/notes/${updateNote.id}`, updateNote).subscribe(() => {
+      console.log('update note ' + updateNote.id);
+      this.loadDataFromDb();
+      this.reset();
+    });
+  }
+
+  private creatFrom(form): void {
+    const newNote = {...form.value};
+    this.httpClient.post(`${BASE_URL}/notes`, newNote).subscribe(() => {
+      console.log('note created ...');
+      this.loadDataFromDb();
+      this.reset();
+    });
+  }
+
+  delete(id: number): void {
+    this.httpClient.delete(`${BASE_URL}/notes/${id}`).subscribe(() => {
+      console.log('note deleted ' + id);
+      this.loadDataFromDb();
+      this.reset();
+    });
   }
 }
 
