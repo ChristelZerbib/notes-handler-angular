@@ -4,12 +4,13 @@ import {MainComponent} from './main/main.component';
 import {LoginComponent} from './login/login.component';
 import {LoginGuardService} from './services/login-guard.service';
 import {AboutComponent} from './about/about.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: 'home', component: MainComponent, canActivate: [LoginGuardService]},
   {path: 'login', component: LoginComponent},
-  {path: 'about', component: AboutComponent}
-  // {path: '**', component: MainComponent}
+  {path: 'about', component: AboutComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
