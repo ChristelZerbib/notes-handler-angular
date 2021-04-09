@@ -18,10 +18,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-     this.loginService.login();
+    this.isConnected = true;
+    this.loginService.login();
   }
 
   logout(): void {
+    this.isConnected = false;
     this.loginService.logout();
   }
 }
