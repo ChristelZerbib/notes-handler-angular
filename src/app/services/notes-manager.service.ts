@@ -11,7 +11,7 @@ export function generateId(): number {
   return getRandomInt(100000, 99999);
 }
 
-const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'http://localhost:3000';
 export type Note = {
   id: number,
   title: string,

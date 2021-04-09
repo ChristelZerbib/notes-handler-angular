@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from '../services/login.service';
+import {LoginService, User} from '../services/login.service';
+import {BASE_URL} from '../services/notes-manager.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,20 @@ import {LoginService} from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private httpClient: HttpClient) {
   }
 
   isConnected;
 
   ngOnInit(): void {
-    this.isConnected = this.loginService.isConnected;
+    this.loadStateConnection();
+  }
+
+
+  loadStateConnection(): void {
+    this.httpClient.get(`${BASE_URL}/user`).subscribe(user => {
+      this.isConnected = (user as User).isConnected;
+    });
   }
 
   login(): void {

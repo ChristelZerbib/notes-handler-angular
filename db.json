@@ -24,5 +24,8 @@
       "description": "rendre visite à papa ..",
       "done": false
     }
-  ]
+  ],
+  "user": {
+    "isConnected": true
+  }
 }
