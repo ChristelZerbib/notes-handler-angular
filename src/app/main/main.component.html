@@ -1,13 +1,19 @@
-<div [ngStyle]="{display: 'flex'}">
-  <div class="main">
-    <!--  head-->
-    <app-notes-head></app-notes-head>
-    <!--  notes-->
-     <app-note *ngFor="let note of notes" [note]="note"
-               (selected)="selectNote($event)" (deleted)="deleteNote($event)">
+<div class="container">
+  <div class="columns">
+    <div class="column mt-6 is-half">
+      <!--  head-->
+      <app-notes-head></app-notes-head>
+      <!--  notes-->
+      <div class="tile is-parent cartes">
+        <app-note *ngFor="let note of notes" [note]="note"
+                  (selected)="selectNote($event)" (deleted)="deleteNote($event)">
+        </app-note>
+      </div>
 
-     </app-note>
+    </div>
+    <div class="column mt-6 is-half">
+      <app-note-editor></app-note-editor>
+    </div>
   </div>
-  <app-note-editor></app-note-editor>
 </div>
 

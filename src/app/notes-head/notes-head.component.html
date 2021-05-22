@@ -1,14 +1,15 @@
-<div class="head">
-  <div>
-    <label for="notes-number">Notes : </label>
-    <span id="notes-number">{{notes.length}}</span>
+<div class="block columns has-background-dark card mb-4">
+  <div class="column">
+    <h1 class="title is-3 has-text-light">Notes : {{notes.length}}</h1>
   </div>
-  <div *ngIf="onlyDone().length !== 0; else motivate">
-    <label for="only-done-notes-number">Done : </label>
-    <span id="only-done-notes-number">{{onlyDone().length}}</span>
+  <div class="column" *ngIf="onlyDone().length !== 0; else motivate">
+    <h1 class="title is-3 has-text-right has-text-light">Done : {{onlyDone().length}}</h1>
   </div>
   <ng-template #motivate>
-    <span>Faites un effort svp !!</span>
+    <div class="column">
+      <h1 class="title is-3 has-text-right has-text-link">Courage !</h1>
+    </div>
+
   </ng-template>
 </div>
 

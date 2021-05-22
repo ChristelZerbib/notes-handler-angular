@@ -11,7 +11,7 @@ export class LoginGuardService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    if (this.loginService.isConnected) {
+    if (this.loginService.myUser.isConnected) {
       return true;
     } else {
       this.router.navigateByUrl('/login').then(() => console.log('redirection ...'));

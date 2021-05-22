@@ -1,18 +1,11 @@
-.note {
-  border: solid 1px;
-  border-radius: 0.3rem;
-  padding: 0.3rem;
-  margin: 0.7rem 0.5rem 0.7rem 0.5rem;
-}
-.note.done{
-  background-color: #28b5b5;
-}
-.note-title{
-  font-weight: bold;
-  font-size: 1.3em;
+.is-child {
+  width: 200px;
 }
 
-.actions {
-  display: flex;
-  justify-content: space-between;
+.note {
+  background-color: lightskyblue;
+}
+
+.card.note.done {
+  background-color: aquamarine;
 }

@@ -1,12 +1,18 @@
-<div [ngClass]="{'note': true, 'done': note.done}" (click)="selected.emit(note.id)">
-  <span class="note-title">{{note.title |  uppercase}}</span>
-  <span>(Créée le : {{note.createdAt | date : 'dd/MM/yyyy'}})</span>
-  <p class="note-description">{{note.description}}</p>
-  <div class="actions">
-    <div>
-      <label>Effectuée ?</label>
-      <input type="checkbox" [checked]="note.done" disabled/>
+<div class="tile is-child">
+  <div class="card mt-5 mr-5" [ngClass]="{'note': true, 'done': note.done}" (click)="selected.emit(note.id)">
+    <div class="card-content">
+      <p class="is-size-5 mt-4 has-text-weight-bold">{{note.title |  uppercase}}</p>
+      <p>(Créée le : {{note.createdAt | date : 'dd/MM/yyyy'}})</p>
+      <p>{{note.description}}</p>
+      <label class="label">Effectuée ?
+        <input type="checkbox" [checked]="note.done" disabled/>
+      </label>
     </div>
-    <button [disabled]="note.done" (click)="deleted.emit(note.id)">Supprimer</button>
+
+    <div class="card-footer">
+
+      <button class="card-footer-item" [disabled]="note.done" (click)="deleted.emit(note.id)">Supprimer</button>
+    </div>
   </div>
+
 </div>

@@ -1,10 +1,4 @@
-.main{
-  background-color: #4b778d;
-  color: #d2e69c;
-  width: 50%;
-}
-
-
-app-note-editor{
-  width: 50%;
+.cartes {
+  display: flex;
+  flex-wrap: wrap;
 }

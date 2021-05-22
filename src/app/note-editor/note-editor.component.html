@@ -1,25 +1,26 @@
-<form class="form" #myForm="ngForm" (ngSubmit)="createOrUpdateNote(myForm)">
+<form class="card" #myForm="ngForm" (ngSubmit)="createOrUpdateNote(myForm)">
 
   <input name="id" [(ngModel)]="selectedNote().id" hidden/>
-  <p>
-    <label for="title-edit">Titre: </label>
-    <input type="text" id="title-edit" placeholder="Titre" name="title" [(ngModel)]="selectedNote().title" required/>
+  <p class="card-content">
+    <label  class="label" for="title-edit">Titre: </label>
+    <input class="input" type="text" id="title-edit" placeholder="Titre" name="title" [(ngModel)]="selectedNote().title" required/>
   </p>
-  <p class="description-edition">
-    <label for="description-edit">Description: </label>
-    <textarea id="description-edit"
+  <p class="card-content">
+    <label class="label" for="description-edit">Description: </label>
+    <textarea class="textarea"
+              id="description-edit"
               name="description"
               placeholder="Description"
               cols="50"
               rows="5" [(ngModel)]="selectedNote().description">
       </textarea>
   </p>
-  <p>
-    <label for="done-edit">Effectuée?: </label>
-    <input name="done" type="checkbox" id="done-edit" [(ngModel)]="selectedNote().done"/>
+  <p class="card-content">
+    <label class="label" for="done-edit">Effectuée?: <input class="checkbox" name="done" type="checkbox" id="done-edit" [(ngModel)]="selectedNote().done"/></label>
+
   </p>
-  <div class="actions">
-    <button type="submit" [disabled]="myForm.invalid">Enregistrer</button>
-    <button type="button" (click)="reset()">Reset</button>
+  <div class="card-footer">
+    <button class="card-footer-item" type="submit" [disabled]="myForm.invalid">Enregistrer</button>
+    <button class="card-footer-item" type="button" (click)="reset()">Reset</button>
   </div>
 </form>

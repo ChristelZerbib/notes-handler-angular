@@ -15,6 +15,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isConnected(): boolean {
-    return this.loginService.isConnected;
+    return this.loginService.myUser.isConnected;
   }
 }

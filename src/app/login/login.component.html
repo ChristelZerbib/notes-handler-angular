@@ -1,6 +1,8 @@
-<h2 [ngClass]="{connected: isConnected}">Connexion</h2>
-<p>
-<button (click)="login()" *ngIf="!isConnected">login</button>
-<button (click)="logout()" *ngIf="isConnected">logout</button>
-  <a routerLink="/profile" *ngIf="isConnected">Modifier le profil</a>
-</p>
+<div class="container">
+  <h2 class="title is-1 mt-6" [ngClass]="{connected: isConnected}">Connexion</h2>
+  <p>
+    <button class="button is-dark" (click)="login()" *ngIf="!isConnected">Log-In</button>
+    <button class="button is-dark" (click)="logout()" *ngIf="isConnected">Log-Out</button>
+    <a class="button is-dark" routerLink="/profile" *ngIf="isConnected">Modifier le profil</a>
+  </p>
+</div>

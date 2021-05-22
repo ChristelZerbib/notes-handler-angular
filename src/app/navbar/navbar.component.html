@@ -1,8 +1,18 @@
-<ul>
-  <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
-  <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
-  <li><a routerLink="/about" routerLinkActive="active-link">About</a></li>
-  <li class="state-connection">
-    <div [ngClass]="{connected:isConnected()}" id="state-connection"></div>
-  </li>
-</ul>
+<nav class="navbar has-background-dark has-text-light" >
+  <div class="container">
+    <div class="navbar-brand">
+
+      <div class="navbar-item">
+        <a class="has-text-light is-size-4" routerLink="/home" routerLinkActive="has-text-info">Home</a>
+      </div>
+      <div class="navbar-item"><a class="has-text-light is-size-4" routerLink="/login" routerLinkActive="has-text-info">Login</a></div>
+      <div class="navbar-item"><a class="has-text-light is-size-4" routerLink="/about" routerLinkActive="has-text-info">About</a></div>
+    </div>
+    <div class="navbar-item navbar-end">
+      <div [ngClass]="{connected:isConnected()}" id="state-connexion"></div>
+    </div>
+  </div>
+
+
+</nav>
+
