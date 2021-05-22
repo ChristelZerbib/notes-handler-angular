@@ -5,11 +5,13 @@ import {LoginComponent} from './login/login.component';
 import {LoginGuardService} from './services/login-guard.service';
 import {AboutComponent} from './about/about.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: 'home', component: MainComponent, canActivate: [LoginGuardService]},
   {path: 'login', component: LoginComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'profile', component: UserProfileComponent, canActivate: [LoginGuardService]},
   {path: '**', component: NotFoundComponent}
 ];
 

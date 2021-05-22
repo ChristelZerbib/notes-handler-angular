@@ -3,32 +3,50 @@ import {HttpClient} from '@angular/common/http';
 import {BASE_URL} from './notes-manager.service';
 
 export type User = {
-  isConnected: boolean
+  isConnected: boolean,
+  username: string,
+  firstname: string,
+  country: string
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  isConnected;
+  isConnected: boolean;
+  myUser: User = {
+    isConnected: true,
+    username: 'Zerbib',
+    firstname: 'Christel',
+    country: 'France'
+  };
 
   constructor(private httpClient: HttpClient) {
     this.httpClient.get(`${BASE_URL}/user`).subscribe(user => {
       this.isConnected = (user as User).isConnected;
+      this.myUser = (user as User);
     });
   }
 
   login(): void {
-    this.isConnected = true;
-    this.httpClient.put(`${BASE_URL}/user`, {isConnected: true}).subscribe(() => {
+    this.myUser.isConnected = true;
+    this.httpClient.put(`${BASE_URL}/user`, {...this.myUser}).subscribe(() => {
       console.log('login ...');
     });
   }
 
   logout(): void {
-    this.isConnected = false;
-    this.httpClient.put(`${BASE_URL}/user`, {isConnected: false}).subscribe(() => {
+    this.myUser.isConnected = false;
+    this.httpClient.put(`${BASE_URL}/user`, {...this.myUser}).subscribe(() => {
       console.log('logout ...');
     });
   }
+
+  update(form): void {
+    this.myUser = { ...form.value, isConnected: true};
+    this.httpClient.put(`${BASE_URL}/user`, this.myUser).subscribe(() => {
+      console.log('user updated ...');
+    });
+  }
+
 }

@@ -2,4 +2,5 @@
 <p>
 <button (click)="login()" *ngIf="!isConnected">login</button>
 <button (click)="logout()" *ngIf="isConnected">logout</button>
+  <a routerLink="/profile" *ngIf="isConnected">Modifier le profil</a>
 </p>

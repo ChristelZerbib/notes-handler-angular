@@ -1,0 +1,18 @@
+<form class="form" #userForm="ngForm" (ngSubmit)="updateuser(userForm)">
+  <p>
+  <label for="name-edit">Nom : </label>
+  <input type="text" id="name-edit" placeholder="Nom" name="username" [(ngModel)]="myUser().username" required/>
+  </p>
+  <p>
+    <label for="firstname-edit">Prénom : </label>
+    <input type="text" id="firstname-edit" placeholder="Prénom" name="firstname" [(ngModel)]="myUser().firstname" required/>
+  </p>
+  <p>
+    <label for="country-edit">Pays : </label>
+    <input type="text" id="country-edit" placeholder="Pays" name="country" [(ngModel)]="myUser().country" required/>
+  </p>
+  <p>
+    <button type="submit">Enregistrer</button>
+  </p>
+</form>
+

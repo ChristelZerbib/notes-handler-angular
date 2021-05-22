@@ -21,11 +21,14 @@
     {
       "id": 5,
       "title": "Maman & Papa",
-      "description": "rendre visite à papa ..",
+      "description": "rendre visite à papa...",
       "done": false
     }
   ],
   "user": {
+    "username": "Zerbib",
+    "firstname": "Christel",
+    "country": "France",
     "isConnected": true
   }
 }
