@@ -13,7 +13,6 @@ export type User = {
   providedIn: 'root'
 })
 export class LoginService {
-  isConnected: boolean;
   myUser: User = {
     isConnected: true,
     username: 'Zerbib',
@@ -23,7 +22,6 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) {
     this.httpClient.get(`${BASE_URL}/user`).subscribe(user => {
-      this.isConnected = (user as User).isConnected;
       this.myUser = (user as User);
     });
   }
